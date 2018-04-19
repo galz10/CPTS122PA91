@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\galz10\documents\visual studio 2015\projects\cpts122pa9\cpts122pa9\header.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\galz10\documents\visual studio 2015\projects\cpts122pa9\cpts122pa9\source.cpp(197): warning C4715: 'setBackground': not all control paths return a value
+  CPTS122PA9.vcxproj -> C:\Users\Galz10\documents\visual studio 2015\Projects\CPTS122PA9\Debug\CPTS122PA9.exe
+  CPTS122PA9.vcxproj -> C:\Users\Galz10\documents\visual studio 2015\Projects\CPTS122PA9\Debug\CPTS122PA9.pdb (Full PDB)
