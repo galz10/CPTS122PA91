@@ -29,6 +29,9 @@
   <ItemGroup>
     <ClInclude Include="Header.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="font.ttf" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EBE5E772-43F2-447C-B721-63D514F05A87}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
