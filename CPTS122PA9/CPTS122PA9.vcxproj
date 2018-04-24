@@ -24,6 +24,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="background.bmp" />
+    <Image Include="cat_fighter_sprite1.pngcat_fighter_sprite1.pngcat_fighter_sprite1.pngcat_fighter_sprite1.png" />
+    <Image Include="frame-1.png" />
     <Image Include="mazebackground.png" />
   </ItemGroup>
   <ItemGroup>

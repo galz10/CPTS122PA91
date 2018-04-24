@@ -1,10 +1,18 @@
 #include "Header.h"
 int run()
 {
+	bool won;
 	sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
-	sf::CircleShape shape(10.f);
+	sf::CircleShape shape(15.f);
 	shape.setOrigin(sf::Vector2f(-395, -565));
-	shape.setFillColor(sf::Color::Green);
+	shape.setFillColor(sf::Color::White);
+	Texture *PLAY;
+	PLAY = new Texture();
+	if (!PLAY->loadFromFile("frame-1.png"))
+	{
+
+	}
+	shape.setTexture(PLAY);
 
 	
 
@@ -17,7 +25,7 @@ int run()
 	timerText.setPosition(400, 0);
 	timerText.setCharacterSize(40);
 
-	int i = 0;
+	int i = 0, k = 0, n= 30;
 	sf::Clock clock;
 	sf::Time time;
 	while (window.isOpen())
@@ -31,19 +39,14 @@ int run()
 				window.close();
 
 		}
-
-		clock.restart();
-		time = clock.getElapsedTime();
-
-		enemy(window, shape);
-
-		timerText.setString(to_string(time.asSeconds()));
-		cout << time.asSeconds();
 		window.clear();
 		setBackground(window);
 		window.draw(shape);
-		updatePlayer(shape, i);
-		window.draw(timerText);
+		updatePlayer(shape, i,window);
+		if (drawlaser(window, shape) == true) 
+		{
+			won = false;
+		}
 		window.display();
 		
 	}
@@ -157,7 +160,7 @@ void playerCollisions(CircleShape & player, int type, int keyPress)
 }
 
 
-void updatePlayer(CircleShape &player, int keyPress)
+void updatePlayer(CircleShape &player, int keyPress, RenderWindow & wind)
 {
 	if (keyPress < 8) 
 	{
@@ -165,12 +168,15 @@ void updatePlayer(CircleShape &player, int keyPress)
 	}
 	if (Keyboard::isKeyPressed(Keyboard::A)&&keyPress <=8 && player.getPosition().x >-295){
 		playerCollisions(player, 0, keyPress);
-		keyPress = 0;
 		
+		keyPress = 0;
+	
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W) && keyPress <= 8 && player.getPosition().y  >-560)
 	{
+		
 		playerCollisions(player, 3, keyPress);
+		wind.draw(player);
 		keyPress = 0;
 		
 	}
@@ -200,24 +206,58 @@ int setBackground(sf::RenderWindow & wind)
 	wind.draw(shape1);
 }
 
-void enemy(sf::RenderWindow & window , CircleShape & shape)
+bool drawlaser(sf::RenderWindow & wind, CircleShape &player)
 {
-	Bullet b1;
+	RectangleShape laser1(sf::Vector2f(5, 100));
+	RectangleShape laser(sf::Vector2f(5, 100));
+	RectangleShape laser2(sf::Vector2f(5, 100));
+	laser1.setOrigin(-483,-465);
+	laser1.setFillColor(Color::Transparent);
 
-	vector<Bullet>bull;
-	bull.push_back(Bullet(b1));
-
-	if(shape.getPosition().x == 0 && shape.getPosition().y == 0)
+	if ((player.getPosition().x > 70 && player.getPosition().x < 90) && (player.getPosition().y < -35 && player.getPosition().y > -90)) 
 	{
-		b1.bullet.setPosition(Vector2f(100, 100));
-		b1.curvellocity = b1.curvellocity;
-
-		bull.push_back(Bullet(b1));
+		laser1.setOrigin(-483, -465);
+		laser1.setFillColor(Color::White);
+		laser.setOrigin(-322, -310);
+		laser.setFillColor(Color::White);
+		laser2.setOrigin(-395, -245);
+		laser2.setFillColor(Color::White);
+		wind.draw(laser1);
+		wind.draw(laser);
+		wind.draw(laser2);
+		return true;
 	}
-	for (size_t i = 0; i < bull.size; i++)
+	if ((player.getPosition().x > -90 && player.getPosition().x < -60) && (player.getPosition().y < -165 && player.getPosition().y > -245))
 	{
-		bull[i].bullet.move(bull[i].curvellocity);
+		laser1.setOrigin(-483, -465);
+		laser1.setFillColor(Color::White);
+		laser.setOrigin(-322, -310);
+		laser.setFillColor(Color::White);
+		laser2.setOrigin(-395, -245);
+		laser2.setFillColor(Color::White);
+		wind.draw(laser1);
+		wind.draw(laser);
+		wind.draw(laser2);
+		return true;
+	}
+	if ((player.getPosition().x > -15 && player.getPosition().x < 10) && (player.getPosition().y < -235 && player.getPosition().y > -310))
+	{
+		laser1.setOrigin(-483, -465);
+		laser1.setFillColor(Color::White);
+		laser.setOrigin(-322, -310);
+		laser.setFillColor(Color::White);
+		laser2.setOrigin(-395, -245);
+		laser2.setFillColor(Color::White);
+		wind.draw(laser1);
+		wind.draw(laser);
+		wind.draw(laser2);
+		return true;
+	}
+	else 
+	{
+		return false;
 	}
 
 }
+
 
