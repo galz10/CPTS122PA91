@@ -4,8 +4,10 @@ int run()
 	bool won;
 	sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
 	sf::CircleShape shape(15.f);
+	//CHANGED
 	shape.setOrigin(sf::Vector2f(-395, -565));
 	shape.setFillColor(sf::Color::White);
+	
 	Texture *PLAY;
 	PLAY = new Texture();
 	if (!PLAY->loadFromFile("frame-1.png"))
@@ -15,7 +17,7 @@ int run()
 	shape.setTexture(PLAY);
 
 	
-
+	//
 	sf::Font timerFont;
 	if (!timerFont.loadFromFile("font.ttf")) {
 		std::cerr << "No font file found!" << std::endl;
@@ -205,7 +207,7 @@ int setBackground(sf::RenderWindow & wind)
 	shape1.setTexture(Bkg);
 	wind.draw(shape1);
 }
-
+//CHANGED
 bool drawlaser(sf::RenderWindow & wind, CircleShape &player)
 {
 	RectangleShape laser1(sf::Vector2f(5, 100));
@@ -259,5 +261,6 @@ bool drawlaser(sf::RenderWindow & wind, CircleShape &player)
 	}
 
 }
+//
 
 
